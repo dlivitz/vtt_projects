@@ -153,13 +153,11 @@ def get_logged_in_players(timeout=0.1):
 def _get_world_url(item):
     return "<p><a href='/"+item[0]+"' >" + item[1][1]+"</a> </p>"
 
-@route('/')
-def index():
-    return redirect("/join")
 
+@route('/')
 @route('/<world>')
-def index(world):
-    if world == "join":
+def index(world=None):
+    if (world == "join") or (world is None):
         return '<h1> Foundry not running - pick a world to start: </h1>'+"".join([_get_world_url(x) for x in world_mapping.items()])
                         
     requested_world_path,requested_world = world_mapping.get(world,[None,None])
