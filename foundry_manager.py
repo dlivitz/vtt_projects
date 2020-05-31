@@ -94,7 +94,7 @@ class monitorPlayers(object):
 
         zero_players=False
         while True:
-            n_players,world_name=get_logged_in_players_world(timeout=30.) #Returns "None" if in setup etc so it's safe
+            n_players=get_logged_in_players(timeout=30.) #Returns "None" if in setup etc so it's safe
             if (n_players == 0) and zero_players:
                 self.foundry_proccess.send_signal(2)
                 self.foundry_proccess.send_signal(2) ##I think I need to send this twice? 
